@@ -66,8 +66,24 @@ import { CategoryProductsComponent } from "./pages/category-products/category-pr
 import { ProductLookupComponent } from "./pages/product-lookup/product-lookup.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 ```
+### Code explanation :
 
- **Component file** : `src/app/pages/landing-home/landing-home.component.ts`
+- `import` means bring this thing into this file so we can use it.
+
+- First we bring `Routes` type from Angular Router.
+
+- we bring all the **components** that we will use in routes.
+
+Example:
+
+`LandingHomeComponent` lives in the file `landing-home.component.ts` inside the `pages/landing-home folder`.
+
+Very important rule:
+**If a component is used in a route, it must be imported here.**
+
+
+
+1. `Component file` : **src/app/pages/landing-home/landing-home.component.ts**
 
 `{ path: "", component: LandingHomeComponent }`
 
@@ -77,12 +93,24 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 
 - This is our **home** route.
 
-- #### `Home page ScreenShot` : ![LandingHome component TypeScript file](images/landing-homefolder_landing-home.component.ts.png)
+- #### `Home page ScreenShot` : ![LandingHome component TypeScript file](images/landing-home.component.ts.png)
 
 
- **Component File** :`src/app/pages/all-categories/all-categories.component.ts`
+### Code Explanation part :
 
-`{ path: "all_product_catgories", component: AllCategoriesComponent }`
+`path: ""` → this is the **root URL**: `http://localhost:4000/`
+
+- When user opens the app without anything after the domain, Angular uses this rule.
+
+- It shows LandingHomeComponent on the screen.
+
+So you can read this line as:
+- “For `/,` display LandingHomeComponent.”
+
+
+### 2 `Component File` :**src/app/pages/all-categories.component.ts**
+
+- { path: **"all_product_catgories"**, component: AllCategoriesComponent } 
 
 - URL: `/all_product_catgories`
 
@@ -91,23 +119,17 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 - Shows all **product categories**.
 
 
+### Code Explanation part :
 
+- This is a `static` (fixed) route the URL is always `/all_product_catgories.`
 
- **Component File** : `src/app/pages/products/products.component.ts`
+- When the URL matches exactly **/all_product_catgories**, Angular shows `AllCategoriesComponent`.
 
-`{ path: "all_products", component: ProductsComponent }`
-
-- URL: `/all_products`
-
-- Component: `ProductsComponent`
-
-- Shows all **25 products**.
-
-### `Product page screenshot` : ![Products component TypeScript file](images/productfolder_products.component.ts.png) 
+- That component displays the list of `all product categories`.
 
 
 
- **Component File** : `src/app/pages/all_categories_.component.ts` 
+### 3. `Component File` : **src/app/pages/all_categories_.component.ts** 
 
 `{ path: "all_product_catgory/:category", component: CategoryProductsComponent }`
 
@@ -121,11 +143,28 @@ Example: `/all_product_catgory/FROZEN` or `/all_product_catgory/FRUITS`
 
 - Uses `category` param to filter products.
 
+
+### Code Explanation:
+
+- This is a **dynamic** route because of :category.
+
+- `:category` is a **route parameter** it acts like a variable in the URL.
+
+Example URLs that match this route:
+
+ - /all_product_catgory/FROZEN
+
+ - /all_product_catgory/FRUITS
+
+- Angular reads the value for `:category` from the URL and passes it to `CategoryProductsComponent`.
+
+Inside the component, we can use that value to **filter products** and show only that category.
+
 ### ![AllCategories component file in app folder](images/all-categories.component.ts.png)
 
 
 
- **Component File** : `src/app/pages/product-lookup/product-lookup.component.ts`
+### 4. `Component File` : **src/app/pages/product-lookup/product-lookup.component.ts**
 
 `{ path: "product_lookup/:id", component: ProductLookupComponent }`
 
@@ -139,41 +178,102 @@ Example: `/product_lookup/25`
 
 - Shows one product with that ID, no quantity.
 
-### `product lookup screenshot` ![ProductLookup component TypeScript file](images/product-lookupfolder_product-lookup.component.ts.png)
+### Code Explanation :
+
+- Both routes use the `same component`: **ProductLookupComponent**.
+
+- First route:
+
+  - URL like `/product_lookup/25`
+
+ - `:id` is the product ID.
+
+ - Component shows details of that product.
+
+- Second route:
+
+ - URL like `/product_lookup/23/5`
+
+ - `:id` is product ID, :qty is quantity.
+
+ - Component can show **total price = price × qty** or similar.
+
+- Good design: one component handles both cases, so no duplicate code.
+
+### `product lookup screenshot` ![ProductLookup component TypeScript file](images/product-lookup.component.ts.png)
 
 
+### 5. `Component File` : **src/app/pages/products/products.component.ts**
+
+`{ path: "all_products", component: ProductsComponent }`
+
+- URL: `/all_products`
+- Component: `ProductsComponent`
+- This page shows the list of **all products** in our project.
+
+#### `Products page screenshot` :  
+![Products component TypeScript file](images/products.component.ts.png)
+
+### Code Explanation part :
+
+- This is a **static (fixed) route**.
+- The URL is always `/all_products` (it does not change).
+- When the URL in the browser matches `/all_products`, Angular uses this rule.
+- It loads the `ProductsComponent` and displays **all products** from the product list.
+- Same URL → same component → same type of page every time.
 
 
- **Component File** : `src/app/pages/not-found/not-found.component.ts`
+### 6. `Component File` : **src/app/pages/product-lookup/product-lookup.component.ts**
+
+`{ path: "product_lookup/:id/:qty", component: ProductLookupComponent }`
+
+- URL pattern: `/product_lookup/<id>/<qty>`
+- Example: `/product_lookup/23/5`
+  - `id = 23`
+  - `qty = 5`
+- Component: `ProductLookupComponent`
+
+### Code Explanation :
+
+- This is also a **dynamic route**, but it has **two route parameters**: `:id` and `:qty`.
+- Angular reads both values from the URL:
+  - `id` → which product
+  - `qty` → how many units
+- Inside `ProductLookupComponent`, we can:
+  - load the product by `id`
+  - use `qty` to calculate **total price** or show “You selected 5 items”.
+- Same component (`ProductLookupComponent`) handles:
+  - `/product_lookup/:id`
+  - `/product_lookup/:id/:qty`
+  so we **avoid duplicate code**.
+
+
+### 7. `Component File` : **src/app/pages/not-found/not-found.component.ts**
 
 `{ path: "not-found", component: NotFoundComponent }`
 
-- URL: /not-found
+- URL: `/not-found`
+- Component: `NotFoundComponent` (our 404 page).
 
-- Component: NotFoundComponent (our 404 page).
+### `notfound screenshot`  
+![NotFound component TypeScript file](images/not-found.component.ts.png)
 
-### `notfound screenshot` ![NotFound component TypeScript file](MD/images/not-foundfolder_not-found.component.ts.png)
+### Code Explanation part :
 
+- This route is used to show the **404 – Page Not Found** screen.
+- The URL `/not-found` is a **static** URL (it never changes).
+- Whenever Angular needs to show an error page, it can navigate to `/not-found`.
+- We also use this together with the wildcard route:
 
+`{ path: "**", redirectTo: "not-found"}`
+-  If the user types a wrong / unknown URL,
 
-**Component File** : `src/app/pages/not-found/not-found.component.ts`
+- Angular will redirect to /not-found, and this NotFoundComponent will be displayed.
 
-`{ path: "**", redirectTo: "not-found" }`
-
-- URL pattern: anything not matched above
-
-- Wildcard `**` route
-
-- Angular automatically redirects to `/not-found`.
-
-
-
-
-
-- ***Important***
+ ***Important***
 Every component we use in a route `must be imported` at the top of app.routes.ts.
 
-For example:
+### For example:
 
 - Route uses `AllCategoriesComponent` → we must have
 `import { AllCategoriesComponent } from "./pages/all-categories/all-categories.component";`
@@ -199,7 +299,7 @@ export const routes: Routes = [
   { path: "product_lookup/:id", component: ProductLookupComponent },
   { path: "product_lookup/:id/:qty", component: ProductLookupComponent },
 
-  // Not found + wildcard
+  // Not found + wildcard 
   { path: "not-found", component: NotFoundComponent },
   { path: "**", redirectTo: "not-found" }
 ];
@@ -228,7 +328,7 @@ export const routes: Routes = [
   { path: "product_lookup/:id", component: ProductLookupComponent },
   { path: "product_lookup/:id/:qty", component: ProductLookupComponent },
   { path: "not-found", component: NotFoundComponent },
-  { path: "**", redirectTo: "not-found" }  // MUST be last
+  { path: "**", redirectTo: "not-found" }  
 ];
 ```
 
