@@ -1,0 +1,24 @@
+<!-- ❌ Product Not Found section -->
+<div *ngIf="notFound" class="nf">
+  <h1>Product Not Found</h1>
+  <p>Invalid Product ID or Quantity.</p>
+  <a routerLink="/all_products">Back to All Products</a>
+</div>
+
+<!-- ✅ Product details section -->
+<div *ngIf="!notFound && product" class="detail-card">
+  <img [src]="product.image" [alt]="product.product_name" />
+  <h2>{{ product.product_name }}</h2>
+  <p>Category: <b>{{ product.product_category }}</b></p>
+  <p>Unit Price: ${{ product.unit_price }}</p>
+
+  <div *ngIf="qty">
+    <hr />
+    <h3>Pricing</h3>
+    <p>
+      Total price for {{ qty }} units is
+      {{ qty }} * {{ product.unit_price }} =
+    </p>
+    <h2>${{ totalPrice }}</h2>
+  </div>
+</div>

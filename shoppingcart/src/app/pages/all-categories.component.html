@@ -1,0 +1,13 @@
+<h2>All Product Categories</h2>
+
+<ul>
+  <li *ngFor="let c of categories">
+    <!-- click chesthe category products page ki -->
+    <a [routerLink]="['/all_product_catgory', c]">
+      {{ c }}
+    </a>
+  </li>
+</ul>
+
+<hr />
+<a routerLink="/all_products">➡ View All Products</a>

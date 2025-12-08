@@ -1,0 +1,14 @@
+<h2>All Products List</h2>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of products; trackBy: trackById">
+    <img [src]="p.image" [alt]="p.product_name" />
+    <h4>{{ p.product_name }}</h4>
+    <p>Category: <b>{{ p.product_category }}</b></p>
+    <p>Unit Price: ${{ p.unit_price }}</p>
+
+    <a [routerLink]="['/product_lookup', p.product_id]">View Product</a>
+    <br />
+    <!-- <a [routerLink]="['/product_lookup', p.product_id, 5]">View With Qty=5</a> -->
+  </div>
+</div>

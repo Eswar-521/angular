@@ -1,1 +1,19 @@
-# angular
+
+
+* [01 - Installation](./MD/01-installation.md) 
+* [02 - Create Project](./MD/02-create-project.md)
+* [03 - Components](./MD/03-components.md)
+* [04 - Templates and Data Binding](./MD/04-templates_and_data-binding.md)
+* [05 - Directives](./MD/05-directives.md)
+* [06 - Pipes](./MD/06-pipes.md)
+* [07 - Services and Dependency Injection](./MD/07-services_and_DependencyInjection.md)
+* [08 - Routing](./MD/08-routing.md) 
+* [09 - Template Driven Forms](./MD/09-forms_template_driven.md)
+* [10 - Reactive Forms](./MD/10-forms_reactive.md)
+* [11 - HttpClient](./MD/11-httpclient.md)
+* [12 - Lifecycle Hooks](./MD/12-lifecycle_hooks.md)
+* [13 - Angular Material](./MD/13-angular_material.md)
+* [14 - Signals](./MD/14-signals.md)
+* [15 - RxJS Basics](./MD/15-rxjs_basics.md)
+* [16 - State Management (NgRx)](./MD/16-state_management-ngrx.md)
+* [17 - Interceptors](./MD/17-interceptors.md) 

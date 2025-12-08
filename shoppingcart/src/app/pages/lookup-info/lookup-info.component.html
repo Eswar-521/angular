@@ -1,0 +1,28 @@
+<h2>Product Lookup & Pricing Guide</h2>
+
+<p>Use these URL patterns:</p>
+
+<ul>
+  <li>
+    <code>/product_lookup/:id</code>
+    → shows single product  
+    <br />
+    Example: <b>/product_lookup/20</b>
+  </li>
+
+  <li>
+    <code>/product_lookup/:id/:qty</code>
+    → shows product + total price  
+    <br />
+    Example: <b>/product_lookup/23/5</b>
+  </li>
+</ul>
+
+<h3>Try Now:</h3>
+<ul>
+  <li><a routerLink="/product_lookup/20">/product_lookup/20</a></li>
+  <li><a routerLink="/product_lookup/23/5">/product_lookup/23/5</a></li>
+  <li><a routerLink="/product_lookup/30">/product_lookup/30 (404)</a></li>
+</ul>
+
+<a routerLink="/">⬅ Back to Home</a>
