@@ -1,7 +1,3 @@
-![project_structure](./images/project_structure.png)
-
-![project_structure1](./images/project_structure1.png) 
-
 
 # Project structure
 

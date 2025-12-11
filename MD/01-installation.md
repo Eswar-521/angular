@@ -24,3 +24,12 @@ OR download:
 
 https://angularjs.org
 
+## STEP 2. Download Project zip file here
+* [angular-shoppingcart.zip](angular-shoppingcart.zip)
+## STEP 3.
+* Open the unzipped location, and run the folllwing command
+* Hello `npm install`
+
+```bash
+node
+```

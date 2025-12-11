@@ -1,15 +1,4 @@
 ## 🖼️ Angular Project Structure – Screenshot Index
-
-<!-- 1. **Overall Angular Workspace**
-   ![Angular Project Structure](images/angularproject_structure.png)
-
-2. **Project Structure (View 1)**
-   ![Project Structure](images/project_structure.png) -->
-
-<!-- 3. **Project Structure (View 2)**
-   ![Project Structure 1](images/project_structure1.png) -->
-
-
   
 
 4. **Shopping Cart Project Structure**
